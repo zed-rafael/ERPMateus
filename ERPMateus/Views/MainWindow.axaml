@@ -3,16 +3,77 @@
         xmlns:vm="using:ERPMateus.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ERPMateus.Views.MainWindow"
         x:DataType="vm:ShellViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ERPMateus">
+        Title="ERPMateus" WindowStartupLocation="CenterScreen">
 
     <Design.DataContext>
         <vm:ShellViewModel/>
     </Design.DataContext>
 
-    
+    <SplitView OpenPaneLength="200"
+               IsPaneOpen="True"
+               DisplayMode="CompactInline"
+               PaneBackground="White"
+               Background="#F7F8FE">
+        <SplitView.Pane>
+            <Border Grid.Column="0" Background="{DynamicResource BgSideBar}"
+                    BorderBrush="#F0F0F0" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="80, *, Auto">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">
+                    <Image Source="/Assets/Images/logo-mateus.png" Width="90" ></Image>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="15 20">
+                    <TextBlock Text="MENU" Classes="Normal" Margin="10,10"/>
+                    <!-- <ListBox Margin="0" Classes="menu-lateral" Background="Transparent" BorderThickness="0"> -->
+                    <!--     <ListBoxItem> -->
+                    <!--         <StackPanel Orientation="Horizontal" Spacing="10"> -->
+                    <!--             <avalonia:MaterialIcon Kind="MonitorDashboard" Width="16" /> -->
+                    <!--             <Label>Painel</Label> -->
+                    <!--         </StackPanel> -->
+                    <!--     </ListBoxItem> -->
+                    <!--     <ListBoxItem> -->
+                    <!--         <StackPanel Orientation="Horizontal" Spacing="10"> -->
+                    <!--             <avalonia:MaterialIcon Kind="FilePdfBox" Width="16" /> -->
+                    <!--             <Label>Autorizações</Label> -->
+                    <!--         </StackPanel> -->
+                    <!--     </ListBoxItem> -->
+                    <!--     <ListBoxItem> -->
+                    <!--         <StackPanel Orientation="Horizontal" Spacing="10"> -->
+                    <!--             <avalonia:MaterialIcon Kind="Gear" Width="16" /> -->
+                    <!--             <Label>Configurações</Label> -->
+                    <!--         </StackPanel> -->
+                    <!--     </ListBoxItem> -->
+                    <!-- </ListBox> -->
+                
+                    <TextBlock Text="OTHERS" Classes="Normal" Margin="0,30,0,10"/>
+                </StackPanel>
+                
+                <!-- <StackPanel Grid.Row="2" Margin="0 20" HorizontalAlignment="Center" Spacing="8"> -->
+                <!--     <Button  Classes="primario" HorizontalAlignment="Stretch"> -->
+                <!--         <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center"> -->
+                <!--             <Label Content="Sair"></Label> -->
+                <!--             <avalonia:MaterialIcon Kind="Logout" /> -->
+                <!--         </StackPanel> -->
+                <!--     </Button> -->
+                <!--     ~1~ <controls:ToggleClaroEscuro /> @1@ -->
+                <!-- </StackPanel> -->
+                
+            </Grid>
+            
+               
+            </Border>
+        </SplitView.Pane>
+        
+        <SplitView.Content>
+            <!-- <TransitioningContentControl Grid.Row="1"  -->
+            <!--                              Content="{Binding DashboardViewModel}" /> -->
+            
+        </SplitView.Content>
+    </SplitView>
 
 </Window>

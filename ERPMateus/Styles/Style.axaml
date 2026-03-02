@@ -1,0 +1,42 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- ========================================== FONTES ========================================== -->
+    <Style Selector="TextBlock">
+        <!-- <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" /> -->
+        <Setter Property="Foreground" Value="#454545" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+    
+    <Style Selector="TextBlock.Normal">
+        <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+        <Setter Property="Foreground" Value="{StaticResource Texto-Primario}" />
+    </Style>
+    
+    
+    <!-- ========================================== BOTOES =========================================== -->
+    <Style Selector="Button.accent">
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="Button.accent:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+    </Style>
+    <Style Selector="Button.accent:pressed">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}"/>
+    </Style>
+    <Style Selector="Button.accent:disabled">
+        <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+</Styles>
