@@ -1,5 +1,24 @@
+## .NET
 bin/
 obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider/JetBrains
+.idea/
+*.iml
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+## VS Code
+.vscode/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Secrets (se tiver)
+**/appsettings.*.json
