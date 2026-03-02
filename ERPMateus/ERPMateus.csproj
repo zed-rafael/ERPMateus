@@ -25,5 +25,7 @@
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.4.1" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0-preview3.25342.7" />
+        <PackageReference Include="Velopack" Version="0.0.1444-gc245055" />
     </ItemGroup>
 </Project>
