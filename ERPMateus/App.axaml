@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="ERPMateus.App"
              xmlns:local="using:ERPMateus"
-             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -11,6 +11,20 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-        <styling:FluentAvaloniaTheme />
+        <FluentTheme />
+        <avalonia:MaterialIconStyles />
+        <StyleInclude Source="Styles/Buttons.axaml" />
     </Application.Styles>
+             
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="AccentColor">#2E7D32</Color> <!-- Forest-ish -->
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+            <SolidColorBrush x:Key="AccentBrushHover" Color="#256628"/>
+            <SolidColorBrush x:Key="AccentBrushPressed" Color="#1F5622"/>
+            <SolidColorBrush x:Key="AccentForegroundBrush" Color="White"/>
+        </ResourceDictionary>
+    </Application.Resources>
+             
+     
 </Application>

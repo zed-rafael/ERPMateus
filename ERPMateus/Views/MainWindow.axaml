@@ -3,7 +3,6 @@
         xmlns:vm="using:ERPMateus.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ERPMateus.Views.MainWindow"
         x:DataType="vm:ShellViewModel"
@@ -14,30 +13,6 @@
         <vm:ShellViewModel/>
     </Design.DataContext>
 
-    <Grid RowDefinitions="*,Auto">
-
-        <controls:NavigationView PaneDisplayMode="Left">
-            <controls:NavigationView.MenuItems>
-                <controls:NavigationViewItem Content="Conexões" Tag="connections" />
-            </controls:NavigationView.MenuItems>
-
-            <controls:NavigationView.Header>
-                <StackPanel Orientation="Horizontal" Spacing="10">
-                    <TextBlock FontSize="20" FontWeight="SemiBold" Text="SigaCredenciais"/>
-                    <Button Content="Atualizar" Command="{Binding CheckUpdatesCommand}" />
-                </StackPanel>
-            </controls:NavigationView.Header>
-
-            <controls:NavigationView.Content>
-                <!-- Troca de conteúdo via Current VM -->
-                <ContentControl Content="{Binding Current}"/>
-            </controls:NavigationView.Content>
-        </controls:NavigationView>
-
-        <Border Grid.Row="1" Padding="12" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
-            <TextBlock Text="{Binding Status}" Opacity="0.8"/>
-        </Border>
-
-    </Grid>
+    
 
 </Window>
