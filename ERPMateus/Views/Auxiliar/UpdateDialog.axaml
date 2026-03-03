@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:ERPMateus.Shared.Converters"
+        xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ERPMateus.Views.Auxiliar.UpdateDialog"
+        x:DataType="viewModels:UpdateDialogViewModel"
+        Title="UpdateDialog">
+        <Grid Margin="16" RowDefinitions="Auto,Auto,Auto,*,Auto">
+
+                <TextBlock Text="{Binding Message}"
+                           FontSize="16"
+                           FontWeight="SemiBold" />
+
+                <!-- Progresso -->
+                <ProgressBar Grid.Row="1"
+                             Margin="0,12,0,0"
+                             Height="10"
+                             IsIndeterminate="{Binding Progress, Converter={x:Static converters:NullToTrueConverter.Instance}}"
+                             Value="{Binding Progress, FallbackValue=0}" />
+
+                <!-- Detalhes -->
+                <TextBlock Grid.Row="2"
+                           Margin="0,10,0,0"
+                           Opacity="0.7"
+                           Text="{Binding Details}" />
+
+                <!-- Erro -->
+                <Border Grid.Row="3"
+                        Margin="0,12,0,0"
+                        Padding="10"
+                        CornerRadius="8"
+                        Background="#33FF0000"
+                        IsVisible="{Binding HasError}">
+                        <TextBlock Text="{Binding ErrorMessage}" />
+                </Border>
+
+                <StackPanel Grid.Row="4"
+                            Margin="0,16,0,0"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Spacing="8">
+                        <Button Content="Fechar"
+                                IsEnabled="{Binding IsBusy, Converter={x:Static converters:InvertBoolConverter.Instance}}"
+                                Click="Close_Click" />
+                </StackPanel>
+
+        </Grid>
+</Window>

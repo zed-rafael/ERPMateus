@@ -1,4 +1,8 @@
+using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
+using ERPMateus.ViewModels;
+using ERPMateus.Views.Auxiliar;
 
 namespace ERPMateus.Views;
 

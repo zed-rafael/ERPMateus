@@ -7,16 +7,19 @@ namespace ERPMateus.ViewModels;
 
 public partial class ShellViewModel : ViewModelBase
 {
+    public DashboardViewModel DashboardViewModel { get; } = new();
+    
     private readonly UpdateService _updates;
 
     [ObservableProperty] private ViewModelBase current;
     [ObservableProperty] private string status = "Pronto.";
+    public string AppVersion => $"v{AppInfo.Version}";
 
     public ConnectionsViewModel Connections { get; }
 
     public ShellViewModel()
     {
-        _updates = new UpdateService("https://SEU_FEED_VELOPACK_AQUI");
+        _updates = new UpdateService("https://meusttr.net/updates/erpmateus");
         Connections = new ConnectionsViewModel(SetStatus);
 
         Current = Connections;

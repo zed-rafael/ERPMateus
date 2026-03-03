@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ERPMateus.Views.Auxiliar.LoginView" x:DataType="viewModels:LoginViewModel">
+    
+    <Grid ColumnDefinitions="*, 1.1*" Background="{DynamicResource BackgroundPrimary}">
+        
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="60,0" MaxWidth="400">
+            <Image Source="/Assets/Images/logo-mateus.png" Height="120" ></Image>
+            <TextBlock Text="Entrar" FontSize="32" FontWeight="Bold" Foreground="#1B2559" Margin="0,0,0,10"/>
+            <TextBlock Text="Informe as suas credencias para entrar no sistema!" Classes="Suave" Margin="0,0,0,30"/>
+
+            <StackPanel Orientation="Vertical" Spacing="20" Margin="0 0 0 8">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Email*" Classes="label__form" />
+                    <TextBox Watermark="mail@simmmple.com" />
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Password*" Classes="label__form" />
+                    <TextBox Watermark="Min. 8 characters" PasswordChar="*">
+                        <TextBox.InnerRightContent>
+                            <Button Classes="Icon" Content="👁️" Background="Transparent" BorderThickness="0" Margin="0,0,10,0"/>
+                        </TextBox.InnerRightContent>
+                    </TextBox>
+                </StackPanel>
+                
+            </StackPanel>
+           
+
+            <DockPanel Margin="0,0,0,25">
+                <CheckBox Content="Keep me logged in" DockPanel.Dock="Left" />
+                <Button Content="Forgot password?" Background="Transparent" Foreground="#4318FF" HorizontalAlignment="Right"/>
+            </DockPanel>
+
+            <Button Classes="primary" Height="42" 
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                    FontWeight="Bold">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <avalonia:MaterialIcon Kind="Login" />
+                    <TextBlock Foreground="White" Text="Entrar" />
+                </StackPanel>
+                
+            </Button>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                <TextBlock Text="Don't have an account?" Foreground="#A3AED0"/>
+                <Button Content="Entrar" Foreground="#4318FF" Background="Transparent" FontWeight="Bold"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Border Grid.Column="1" Margin="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#4318FF"/>
+                    <GradientStop Offset="1" Color="#2B0FB3"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="ERP do futuro!" FontSize="42" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
+                    <TextBlock Text="Rápido, prático e mais acessível" Foreground="White" Opacity="0.8" TextAlignment="Center" Margin="0,15"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

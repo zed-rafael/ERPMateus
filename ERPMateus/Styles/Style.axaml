@@ -18,6 +18,11 @@
         <Setter Property="Foreground" Value="{StaticResource Texto-Primario}" />
     </Style>
     
+    <Style Selector="TextBlock.Suave">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+      <Setter Property="Foreground" Value="{StaticResource Texto-Suave}" />
+    </Style>
+    
     
     <!-- ========================================== BOTOES =========================================== -->
     <Style Selector="Button.accent">
@@ -38,5 +43,158 @@
     </Style>
     <Style Selector="Button.accent:disabled">
         <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+    
+    <Style Selector="Button.primary">
+      <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="12"/>
+      <Setter Property="Padding" Value="14,10"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="Button.primary:pointerover">
+      <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+    </Style>
+    <Style Selector="Button.primary:pressed">
+      <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}"/>
+    </Style>
+    <Style Selector="Button.primary:disabled">
+      <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+    
+    
+    <!-- ========================================== INPUT'S CONTROLS =========================================== -->
+    <Style Selector="TextBlock.label__form">
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Bold}" />
+      <Setter Property="Margin" Value="0,0,0,2" />
+    </Style>
+    
+    <Style Selector="TextBox">
+      <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
+      <Setter Property="BorderBrush" Value="#C3C3C4"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="8"/>
+      <Setter Property="Padding" Value="15,10"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Height" Value="42"></Setter>
+      <Setter Property="Margin" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+      <Setter Property="BorderBrush" Value="#4318FF"/>
+      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
+    </Style>
+
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+      <Setter Property="BorderBrush" Value="#4318FF"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
+    </Style>
+    
+    <!-- ========================================== MENU LATERAL ========================================= -->
+    <Style Selector="ListBox.menu-lateral > ListBoxItem">
+      <Setter Property="FontSize" Value="13"></Setter>
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Semibold}"></Setter>
+      <Setter Property="Height" Value="40"></Setter>
+      <Setter Property="Margin" Value="0"></Setter>
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="CornerRadius" Value="2 4 4 2" />
+      <Setter Property="Foreground" Value="{DynamicResource Texto-Secundario}"></Setter>
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border
+            x:Name="PART_Background" Background="Transparent"
+            CornerRadius="4" Padding="10 0" Margin="0 0 0 5">
+            
+            <Border.Transitions>
+              <Transitions>
+                <BrushTransition
+                  Property="Background"
+                  Duration="0:0:0.350"
+                  Easing="CubicEaseOut"/>
+              </Transitions>
+            </Border.Transitions>
+
+            <ContentPresenter Name="PART_ContentPresenter"
+                              VerticalAlignment="Center"
+                              CornerRadius="{TemplateBinding CornerRadius}"
+                              Foreground="{TemplateBinding Foreground}"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Padding="0" />
+          </Border>
+          
+        </ControlTemplate>
+      </Setter>
+      
+      <Style Selector="^:pointerover /template/ Border#PART_Background">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+        <Setter Property="BorderThickness" Value="2 0 0 0" />
+        <Setter Property="BorderBrush" Value="White" />
+        
+      </Style>
+      
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="White"></Setter>
+      </Style>
+      
+      
+      
+      <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}" />
+      </Style>
+      
+      <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="Transparent" />
+      </Style>
+      
+      <Style Selector="^:selected">
+
+        <Style Selector="^ /template/ Border#PART_Background">
+          <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+          <Setter Property="BorderThickness" Value="2 0 0 0" />
+          <Setter Property="BorderBrush" Value="{DynamicResource Texto-Secundario}" />
+        </Style>
+        
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Background" Value="Transparent" />
+          <Setter Property="Foreground" Value="White" />
+          
+        </Style>
+
+        <!--  Selected Unfocused State  -->
+        <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <!--  Selected PointerOver State  -->
+        
+        <Style Selector="^:pointerover /template/ Border#PART_Background">
+          <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+        </Style>
+      
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Background" Value="Transparent" />
+          <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!--  Selected Pressed State  -->
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="White" />
+        </Style>
+        
+        <Style Selector="^:pressed /template/ Border#PART_Background">
+          <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}"/>
+          <Setter Property="BorderThickness" Value="2 0 0 0" />
+        </Style>
+      </Style>
     </Style>
 </Styles>

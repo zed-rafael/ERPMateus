@@ -22,7 +22,10 @@ public sealed class UpdateService
 
             var info = await mgr.CheckForUpdatesAsync();
             if (info is null)
+            {
+                Console.WriteLine("Sem atualização!");
                 return (false, "Sem atualização.");
+            }
 
             await mgr.DownloadUpdatesAsync(info);
 
@@ -32,7 +35,7 @@ public sealed class UpdateService
         }
         catch (Exception ex)
         {
-            // Em dev é comum falhar (não empacotado).
+            Console.WriteLine(ex.Message);
             return (false, $"Update indisponível: {ex.Message}");
         }
     }

@@ -3,7 +3,7 @@
              x:Class="ERPMateus.App"
              xmlns:local="using:ERPMateus"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
@@ -20,18 +20,25 @@
         
         <Color x:Key="ColorBackgroundMain">#EFEFEF</Color>
         <Color x:Key="ColorBackgroundSecondary">#FFFFFFFF</Color>
+        <Color x:Key="ColorPassagem">#FFF3F8EC</Color>
         
         <Color x:Key="Texto-Primario">#232323</Color>
         <Color x:Key="Texto-Secundario">#454545</Color>
-        <Color x:Key="Texto-Suave">#7F7F7F</Color>
+        <Color x:Key="Texto-Suave">#8F8F8F</Color>
         
-        <Color x:Key="AccentColor">#2E7D32</Color> <!-- Forest-ish -->
+        <!-- <Color x:Key="AccentColor">#2E7D32</Color> Forest-ish --> 
+        <!-- <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/> -->
+        <!-- <SolidColorBrush x:Key="AccentBrushHover" Color="#256628"/> -->
+        <!-- <SolidColorBrush x:Key="AccentBrushPressed" Color="#1F5622"/> -->
+        <!-- <SolidColorBrush x:Key="AccentForegroundBrush" Color="White"/> -->
+
+        <Color x:Key="AccentColor">#4318FF</Color> 
         <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
-        <SolidColorBrush x:Key="AccentBrushHover" Color="#256628"/>
-        <SolidColorBrush x:Key="AccentBrushPressed" Color="#1F5622"/>
+        <SolidColorBrush x:Key="AccentBrushHover" Color="#3311CC"/>
+        <SolidColorBrush x:Key="AccentBrushPressed" Color="#2B0FB3"/>
         <SolidColorBrush x:Key="AccentForegroundBrush" Color="White"/>
         
-        <SolidColorBrush x:Key="BackgrounMain" Color="{StaticResource ColorBackgroundMain}"/>
+        <SolidColorBrush x:Key="BackgroundPrimary" Color="{StaticResource ColorBackgroundMain}"/>
         <SolidColorBrush x:Key="BackgroundSecondary" Color="{StaticResource ColorBackgroundSecondary}"/>
         
         <FontFamily x:Key="Poppins-Extra-Bold">/Assets/Fonts/Nunito-ExtraBold.ttf#Nunito ExtraBold</FontFamily>

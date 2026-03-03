@@ -1,0 +1,88 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ERPMateus.Views.PrincipalView" x:DataType="viewModels:PrincipalViewModel">
+    <SplitView OpenPaneLength="240"
+               IsPaneOpen="True"
+               DisplayMode="CompactInline"
+               PaneBackground="{DynamicResource BackgroundSecondary}"
+               Background="{DynamicResource  BackgroundPrimary}">
+        <SplitView.Pane>
+            <Border Grid.Column="0" Background="{DynamicResource BgSideBar}"
+                    BorderBrush="#F0F0F0" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="80, *, Auto">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">
+                    <Image Source="/Assets/Images/logo-mateus.png" Width="90" ></Image>
+                    
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="15 20">
+                    <TextBlock Text="MENU" Classes="Normal" Margin="10,10"/>
+                    <ListBox Background="Transparent" Classes="menu-lateral">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <avalonia:MaterialIcon Kind="Monitor"  Width="16" />
+                                <Label>Painel</Label>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <avalonia:MaterialIcon Kind="FilePdfBox" Width="16" />
+                                <Label>Autorizações</Label>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <avalonia:MaterialIcon Kind="Gear" Width="16" />
+                                <Label>Configurações</Label>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                
+                    <TextBlock Text="OTHERS" Classes="Normal" Margin="0,30,0,10"/>
+                    
+                </StackPanel>
+                <StackPanel Spacing="10" Grid.Row="2" VerticalAlignment="Bottom" Margin="10">
+                    <TextBlock Text="{Binding Path=AppVersion}" 
+                               Background="OldLace" Padding="10 0"
+                               Opacity="0.6"
+                               HorizontalAlignment="Center"/>
+                    <ProgressBar IsVisible="{Binding IsUpdating}" Height="10" IsIndeterminate="True"></ProgressBar>
+                    <Button IsVisible="{Binding !IsUpdating}" Classes="accent" Command="{Binding CheckUpdateCommand}" HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Center">
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                            <avalonia:MaterialIcon Kind="Refresh"  Width="16" />
+                            <TextBlock Foreground="White" Text="Atualizar!"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <!-- <StackPanel Grid.Row="2" Margin="0 20" HorizontalAlignment="Center" Spacing="8"> -->
+                <!--     <Button  Classes="primario" HorizontalAlignment="Stretch"> -->
+                <!--         <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center"> -->
+                <!--             <Label Content="Sair"></Label> -->
+                <!--             <avalonia:MaterialIcon Kind="Logout" /> -->
+                <!--         </StackPanel> -->
+                <!--     </Button> -->
+                <!--     ~1~ <controls:ToggleClaroEscuro /> @1@ -->
+                <!-- </StackPanel> -->
+                
+            </Grid>
+            
+                
+            </Border>
+        </SplitView.Pane>
+        
+        <SplitView.Content>
+            <StackPanel>
+                <TransitioningContentControl Grid.Row="1"
+                                             Content="{Binding DashboardViewModel}" />
+            </StackPanel>
+            
+            
+        </SplitView.Content>
+    </SplitView>
+</UserControl>
