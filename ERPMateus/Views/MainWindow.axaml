@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         xmlns:auxiliar="clr-namespace:ERPMateus.Views.Auxiliar"
+        xmlns:views="clr-namespace:ERPMateus.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ERPMateus.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -25,6 +26,7 @@
         </Carousel.PageTransition>
         <Carousel.Items>
             <auxiliar:LoginView DataContext="{Binding LoginViewModel}" />
+            <views:PrincipalView DataContext="{Binding PrincipalViewModel}" />
         </Carousel.Items>
     </Carousel>
 

@@ -15,8 +15,12 @@ public partial class LoginViewModel : ViewModelBase
     [ObservableProperty] private string _errorMessage;
     [ObservableProperty] private bool _loginSucesso;
     [ObservableProperty] private bool _habilitarEntrar;
-    
     private readonly Action<Usuario> _onLoginSucesso;
+
+    public LoginViewModel(Action<Usuario> onLoginSucesso)
+    {
+        _onLoginSucesso = onLoginSucesso;
+    }
     
     [RelayCommand(CanExecute = nameof(PodeExecutarLogin))]
     private async Task ExecutarLogin()
@@ -27,14 +31,17 @@ public partial class LoginViewModel : ViewModelBase
         {
             LoginSucesso = false;
             ErrorMessage = "Usuário ou senha inválido.";
+            Console.WriteLine("Usuario null");
             return;
         }
         _onLoginSucesso?.Invoke(usuario);
         LoginSucesso = true;
+        Console.WriteLine("LoginSucesso!!");
     }
     
     private bool PodeExecutarLogin()
     {
-        return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
+        return true;
+        // return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
     }
 }
