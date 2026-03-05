@@ -1,9 +1,9 @@
-name: ERPMateus Release
+name: ERPMateus Linux Auto-Deploy
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
 
 jobs:
   build-linux:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Importante para o Velopack ver histórico se necessário
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -24,16 +24,20 @@ jobs:
 
       - name: Publish Linux
         run: |
+          # O --no-incremental garante que o código novo seja compilado do zero
           dotnet publish ERPMateus/ERPMateus.csproj \
             -c Release \
             -r linux-x64 \
             --self-contained true \
+            --no-incremental \
             -o publish-linux
 
       - name: Pack Linux
         run: |
-          # Extrai a versão da tag (ex: v1.0.0 -> 1.0.0)
-          VERSION=${GITHUB_REF_NAME#v}
+          # Criamos uma versão baseada no número sequencial do GitHub Actions
+          # Se o build for o nº 5, a versão será 1.0.5
+          VERSION="1.0.${{ github.run_number }}"
+          
           vpk pack \
             --packId ERPMateus \
             --packVersion $VERSION \
@@ -50,50 +54,4 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           source: "ReleasesLinux/*"
           target: "/var/www/updates/erpmateus/linux"
-          strip_components: 1
-
-  build-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.x
-
-      - name: Install Velopack
-        run: dotnet tool install -g vpk
-
-      - name: Publish Windows
-        run: |
-          dotnet publish ERPMateus/ERPMateus.csproj `
-            -c Release `
-            -r win-x64 `
-            --self-contained true `
-            -o publish-win
-
-      - name: Pack Windows
-        shell: pwsh
-        run: |
-          $version = "${{ github.ref_name }}".TrimStart('v')
-          vpk pack `
-            --packId ERPMateus `
-            --packTitle "ERP Mateus" `
-            --packVersion $version `
-            --packDir publish-win `
-            --icon ERPMateus/Assets/icon.png `
-            --outputDir ReleasesWin
-
-      - name: Upload Windows to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          source: "ReleasesWin/*"
-          target: "/var/www/updates/erpmateus/win"
           strip_components: 1
