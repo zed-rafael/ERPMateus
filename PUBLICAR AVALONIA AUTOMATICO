@@ -1,0 +1,27 @@
+PUBLICAR AVALONIA AUTOMATICO
+
+
+CRIAR A PASTA NO SERVIDOR NGYNX:
+sudo mkdir -p /var/www/updates/erpmateus
+sudo chown -R www-data:www-data /var/www/updates
+
+-> anexar o trecho no arquivo
+location /updates/ {
+    alias /var/www/updates/;
+    autoindex off;
+
+    # ajuda com JSON e downloads
+    types { application/json json; }
+
+    add_header Cache-Control "no-cache" always;
+}
+
+rodar comando:
+sudo nginx -t
+sudo systemctl reload nginx
+
+PUBLICAR: 
+dotnet publish -c Release -r linux-x64 --self-contained true -o publish
+
+INTALAR O VPK NO TERMINAL
+dotnet tool install -g vpk

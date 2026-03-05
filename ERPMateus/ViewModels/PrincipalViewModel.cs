@@ -7,14 +7,28 @@ using Velopack;
 
 namespace ERPMateus.ViewModels;
 
+public enum PaginaAplicacao
+{
+    Dashboard = 0,
+    Configurações = 1,
+    Correções = 2
+}
+
 public partial class PrincipalViewModel : ViewModelBase
 {
     public DashboardViewModel DashboardViewModel { get; } = new();
     
     public string AppVersion => $"v{AppInfo.Version}";
     [ObservableProperty] private string server;
+    [ObservableProperty] private int pagina;
     [ObservableProperty] private string _UpdateStatus = "Atualizar";
     [ObservableProperty] private bool _IsUpdating;
+
+
+    public PrincipalViewModel()
+    {
+        Pagina =  (int)PaginaAplicacao.Dashboard;
+    }
 
     public void TestCommand() 
     {
@@ -22,9 +36,8 @@ public partial class PrincipalViewModel : ViewModelBase
     }
     
     [RelayCommand]
-    public async Task CheckUpdate()
+    private async Task CheckUpdate()
     {
-
         try
         {
             var mgr = new UpdateManager("https://meusttr.net/updates/erpmateus/");

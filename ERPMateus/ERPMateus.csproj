@@ -31,7 +31,7 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="Material.Icons.Avalonia" Version="3.0.1-nightly.0.2" />
+        <PackageReference Include="Material.Icons.Avalonia" Version="3.0.0" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0-preview3.25342.7" />
         <PackageReference Include="Velopack" Version="0.0.1444-gc245055" />
     </ItemGroup>

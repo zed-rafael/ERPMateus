@@ -32,7 +32,7 @@
         <!-- <SolidColorBrush x:Key="AccentBrushPressed" Color="#1F5622"/> -->
         <!-- <SolidColorBrush x:Key="AccentForegroundBrush" Color="White"/> -->
 
-        <Color x:Key="AccentColor">#4318FF</Color> 
+        <Color x:Key="AccentColor">#2B0FB3</Color> 
         <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
         <SolidColorBrush x:Key="AccentBrushHover" Color="#3311CC"/>
         <SolidColorBrush x:Key="AccentBrushPressed" Color="#2B0FB3"/>
@@ -40,6 +40,11 @@
         
         <SolidColorBrush x:Key="BackgroundPrimary" Color="{StaticResource ColorBackgroundMain}"/>
         <SolidColorBrush x:Key="BackgroundSecondary" Color="{StaticResource ColorBackgroundSecondary}"/>
+        
+        <LinearGradientBrush x:Key="PrimaryBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#111214"></GradientStop>
+            <GradientStop Offset="1" Color="#151E3E"></GradientStop>
+        </LinearGradientBrush>
         
         <FontFamily x:Key="Poppins-Extra-Bold">/Assets/Fonts/Nunito-ExtraBold.ttf#Nunito ExtraBold</FontFamily>
         <FontFamily x:Key="Poppins-Bold">/Assets/Fonts/Nunito-Bold.ttf#Nunito</FontFamily>

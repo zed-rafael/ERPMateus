@@ -4,25 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
+             xmlns:controls="clr-namespace:ERPMateus.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ERPMateus.Views.PrincipalView" x:DataType="viewModels:PrincipalViewModel">
     <SplitView OpenPaneLength="240"
                IsPaneOpen="True"
                DisplayMode="CompactInline"
-               PaneBackground="{DynamicResource BackgroundSecondary}"
+               PaneBackground="{DynamicResource PrimaryBackgroundGradient}"
                Background="{DynamicResource  BackgroundPrimary}">
         <SplitView.Pane>
             <Border Grid.Column="0" Background="{DynamicResource BgSideBar}"
                     BorderBrush="#F0F0F0" BorderThickness="0,0,1,0">
             <Grid RowDefinitions="80, *, Auto">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" 
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 30"
                             HorizontalAlignment="Center">
-                    <Image Source="/Assets/Images/logo-mateus.png" Width="90" ></Image>
+                    <Image Source="/Assets/Images/grupo-mateus-logo.png" Width="90" ></Image>
                     
                 </StackPanel>
                 <StackPanel Grid.Row="1" Margin="15 20">
                     <TextBlock Text="MENU" Classes="Normal" Margin="10,10"/>
-                    <ListBox Background="Transparent" Classes="menu-lateral">
+                    <ListBox SelectedIndex="{Binding Pagina}" 
+                             Background="Transparent" Classes="menu-lateral">
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <avalonia:MaterialIcon Kind="Monitor"  Width="16" />
@@ -47,18 +49,18 @@
                     
                 </StackPanel>
                 <StackPanel Spacing="10" Grid.Row="2" VerticalAlignment="Bottom" Margin="10">
-                    <TextBlock Text="{Binding Path=AppVersion}" 
-                               Background="OldLace" Padding="10 0"
-                               Opacity="0.6"
-                               HorizontalAlignment="Center"/>
+                    
                     <ProgressBar IsVisible="{Binding IsUpdating}" Height="10" IsIndeterminate="True"></ProgressBar>
-                    <Button IsVisible="{Binding !IsUpdating}" Classes="accent" Command="{Binding CheckUpdateCommand}" HorizontalAlignment="Stretch" 
+                    <Button IsVisible="{Binding !IsUpdating}" Classes="primary" Command="{Binding CheckUpdateCommand}" HorizontalAlignment="Stretch" 
                             HorizontalContentAlignment="Center">
                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
                             <avalonia:MaterialIcon Kind="Refresh"  Width="16" />
-                            <TextBlock Foreground="White" Text="Atualizar!"></TextBlock>
+                            <TextBlock Foreground="White"
+                                       Text="Atualizar!"></TextBlock>
                         </StackPanel>
                     </Button>
+                    <TextBlock Text="{Binding Path=AppVersion}" Foreground="White"
+                               Opacity="0.6" HorizontalAlignment="Center"/>
                 </StackPanel>
                 <!-- <StackPanel Grid.Row="2" Margin="0 20" HorizontalAlignment="Center" Spacing="8"> -->
                 <!--     <Button  Classes="primario" HorizontalAlignment="Stretch"> -->
@@ -77,12 +79,39 @@
         </SplitView.Pane>
         
         <SplitView.Content>
-            <StackPanel>
-                <TransitioningContentControl Grid.Row="1"
-                                             Content="{Binding DashboardViewModel}" />
-            </StackPanel>
-            
-            
+            <Grid RowDefinitions="60, *">
+                <Border BorderThickness="0 0 0 1" BorderBrush="#DCDCDC" 
+                        Background="{DynamicResource BackgroundSecondary}">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <StackPanel VerticalAlignment="Center"
+                                    Orientation="Horizontal"
+                                    Margin="20 0" Spacing="12">
+                            <Button Classes="primary-icon" VerticalAlignment="Center" Width="30" Height="28">
+                                <avalonia:MaterialIcon Kind="Menu" FontSize="12"></avalonia:MaterialIcon>
+                            </Button>
+                            <TextBlock FontSize="16" VerticalAlignment="Center"
+                                       Classes="Bold" Text="Dashboard"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" 
+                                    HorizontalAlignment="Right" Margin="0 0 20 0"
+                                    Spacing="8" VerticalAlignment="Center">
+                            <StackPanel Spacing="0" VerticalAlignment="Center">
+                                <TextBlock FontSize="13" Text="Zeuxis Rafael" Classes="Bold" />
+                                <TextBlock Margin="0" FontSize="12" Padding="0"
+                                           HorizontalAlignment="Right"
+                                           Classes="metadata"
+                                           Text="Desenvolvedor"></TextBlock>
+                            </StackPanel>
+                            <controls:ImageRemote Width="32" VerticalAlignment="Center" 
+                                                    Height="32" Url="https://i.pravatar.cc/90" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <StackPanel Grid.Row="1">
+                    <TransitioningContentControl 
+                                                 Content="{Binding DashboardViewModel}" />
+                </StackPanel>
+            </Grid>
         </SplitView.Content>
     </SplitView>
 </UserControl>

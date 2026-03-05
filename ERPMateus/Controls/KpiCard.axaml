@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls="clr-namespace:ERPMateus.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ERPMateus.Controls.KpiCard">
+    
+    <Border Background="White" CornerRadius="12" Padding="15" Margin="10" BoxShadow="0 2 10 0 #08000000">
+        <Grid ColumnDefinitions="Auto, *">
+            <Border Grid.Column="0" Width="40" Height="40" Background="#F4F7FE" CornerRadius="20">
+                <avalonia:MaterialIcon Foreground="#3295FB" Width="18" Kind="{Binding Icone,
+                RelativeSource={RelativeSource AncestorType=controls:KpiCard}}" />
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" Spacing="8">
+                <TextBlock Text="{Binding Titulo,
+                RelativeSource={RelativeSource AncestorType=controls:KpiCard}}" 
+                           Classes="metadata"/>
+                <TextBlock Text="{Binding Valor,
+                RelativeSource={RelativeSource AncestorType=controls:KpiCard}}" 
+                           Classes="h2"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

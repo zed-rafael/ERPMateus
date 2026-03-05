@@ -23,6 +23,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public DashboardViewModel DashboardViewModel { get; } = new();
 
     [ObservableProperty] private int? paginaAplicacao = 0;
+    
 
     public MainWindowViewModel()
     {
@@ -31,7 +32,13 @@ public partial class MainWindowViewModel : ViewModelBase
         EstaLogado = false;
         PaginaAplicacao = PAGINA_LOGIN;
     }
-    
+
+    [RelayCommand]
+    private void Testar()
+    {
+        Console.WriteLine("TESTE OK!");
+    }
+
     private void OnLoginSucesso(Usuario usuario)
     {
         //__GLOBAL._USUARIO = usuario;

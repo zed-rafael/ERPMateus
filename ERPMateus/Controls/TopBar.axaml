@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ERPMateus.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ERPMateus.Controls.TopBar">
+    <Border Background="{DynamicResource BackgroundSecondary}"
+            BorderThickness="0,0,0,1">
+        <DockPanel LastChildFill="True">
+            <!-- Left: page title -->
+            <StackPanel DockPanel.Dock="Left" Spacing="2">
+                <TextBlock Text="{Binding Title, 
+                RelativeSource={RelativeSource AncestorType=controls:TopBar}}"
+                           FontSize="18" FontWeight="SemiBold"/>
+                <TextBlock Text="{Binding Subtitle, 
+                RelativeSource={RelativeSource AncestorType=controls:TopBar}}"
+                           Opacity="0.65" FontSize="12"/>
+            </StackPanel>
+
+            <!-- Right: actions slot -->
+            <StackPanel DockPanel.Dock="Right"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Spacing="10">
+                <ContentPresenter Content="{Binding Actions, 
+                RelativeSource={RelativeSource AncestorType=controls:TopBar}}"/>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</UserControl>

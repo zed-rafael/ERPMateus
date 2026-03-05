@@ -16,18 +16,21 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
-     <Carousel SelectedIndex="{Binding PaginaAplicacao}">
-        <Carousel.PageTransition >
-            <CompositePageTransition>
+    <Grid RowDefinitions="Auto, *">
+        <Carousel Grid.Row="1" SelectedIndex="{Binding PaginaAplicacao}">
+            <Carousel.PageTransition >
                 <CompositePageTransition>
-                    <Rotate3DTransition Duration="0:00:00.250" />
+                    <CompositePageTransition>
+                        <Rotate3DTransition Duration="0:00:00.450" />
+                    </CompositePageTransition>
                 </CompositePageTransition>
-            </CompositePageTransition>
-        </Carousel.PageTransition>
-        <Carousel.Items>
-            <auxiliar:LoginView DataContext="{Binding LoginViewModel}" />
-            <views:PrincipalView DataContext="{Binding PrincipalViewModel}" />
-        </Carousel.Items>
-    </Carousel>
+            </Carousel.PageTransition>
+            <Carousel.Items>
+                <auxiliar:LoginView DataContext="{Binding LoginViewModel}" />
+                <views:PrincipalView DataContext="{Binding PrincipalViewModel}" />
+            </Carousel.Items>
+        </Carousel>
+    </Grid>
+     
 
 </Window>

@@ -8,14 +8,34 @@
 
     <!-- ========================================== FONTES ========================================== -->
     <Style Selector="TextBlock">
-        <!-- <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" /> -->
-        <Setter Property="Foreground" Value="#454545" />
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+    
+    <Style Selector="TextBlock.h2">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Extra-Bold}" />
+      <Setter Property="FontSize" Value="22" />
+    </Style>
+    
+    <Style Selector="TextBlock.metadata">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Foreground" Value="{DynamicResource Texto-Suave}"></Setter>
+    </Style>
+    
+    <Style Selector="Label">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+      <Setter Property="FontSize" Value="14" />
     </Style>
     
     <Style Selector="TextBlock.Normal">
         <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
         <Setter Property="Foreground" Value="{StaticResource Texto-Primario}" />
+    </Style>
+
+    <Style Selector="TextBlock.Bold">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Bold}" />
+      <Setter Property="Foreground" Value="{StaticResource Texto-Primario}" />
     </Style>
     
     <Style Selector="TextBlock.Suave">
@@ -46,13 +66,13 @@
     </Style>
     
     <Style Selector="Button.primary">
-      <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+      <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
       <Setter Property="Foreground" Value="White"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
       <Setter Property="BorderThickness" Value="0"/>
-      <Setter Property="CornerRadius" Value="12"/>
+      <Setter Property="CornerRadius" Value="8"/>
       <Setter Property="Padding" Value="14,10"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="FontFamily" Value="{DynamicResource Poppins-Semibold}"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="Cursor" Value="Hand"/>
@@ -67,6 +87,27 @@
       <Setter Property="Opacity" Value="0.55"/>
     </Style>
     
+    <Style Selector="Button.primary-icon">
+      <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="4"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="Button.primary-icon:pointerover">
+      <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+    </Style>
+    <Style Selector="Button.primary-icon:pressed">
+      <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}"/>
+    </Style>
+    <Style Selector="Button.primary-icon:disabled">
+      <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+    
     
     <!-- ========================================== INPUT'S CONTROLS =========================================== -->
     <Style Selector="TextBlock.label__form">
@@ -75,43 +116,82 @@
       <Setter Property="Margin" Value="0,0,0,2" />
     </Style>
     
+    <!-- <Style Selector="TextBox"> -->
+    <!--   <Setter Property="VerticalContentAlignment" Value="Center"></Setter> -->
+    <!--   <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/> -->
+    <!--   <Setter Property="BorderBrush" Value="#C3C3C4"/> -->
+    <!--   <Setter Property="BorderThickness" Value="1"/> -->
+    <!--   <Setter Property="CornerRadius" Value="8"/> -->
+    <!--   <Setter Property="Padding" Value="15,10"/> -->
+    <!--   <Setter Property="FontSize" Value="14"/> -->
+    <!--   <Setter Property="Height" Value="42"></Setter> -->
+    <!--   <Setter Property="Margin" Value="0"></Setter> -->
+    <!-- </Style> -->
+    <!-- -->
+    <!-- <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement"> -->
+    <!--   <Setter Property="BorderBrush" Value="#4318FF"/> -->
+    <!--   <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/> -->
+    <!-- </Style> -->
+    <!-- -->
+    <!-- <Style Selector="TextBox:focus /template/ Border#PART_BorderElement"> -->
+    <!--   <Setter Property="BorderBrush" Value="#4318FF"/> -->
+    <!--   <Setter Property="BorderThickness" Value="2"/> -->
+    <!--   <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/> -->
+    <!-- </Style> -->
+    
     <Style Selector="TextBox">
       <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
-      <Setter Property="BorderBrush" Value="#C3C3C4"/>
-      <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="CornerRadius" Value="8"/>
-      <Setter Property="Padding" Value="15,10"/>
-      <Setter Property="FontSize" Value="14"/>
       <Setter Property="Height" Value="42"></Setter>
-      <Setter Property="Margin" Value="0"></Setter>
-    </Style>
+      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}" />
+      <Setter Property="BorderBrush" Value="#C6CACD"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="Padding" Value="12,10"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="CaretBrush" Value="#16A34A"/>
+        
+     
+      <!-- PointerOver State-->
+      <Style Selector="^:pointerover">
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
 
-    <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
-      <Setter Property="BorderBrush" Value="#4318FF"/>
-      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
-    </Style>
+        <Style Selector="^ /template/ Border#PART_BorderElement">
+          <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
+          <Setter Property="BorderBrush" Value="#98CDFD"/>
+        </Style>
 
-    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-      <Setter Property="BorderBrush" Value="#4318FF"/>
-      <Setter Property="BorderThickness" Value="2"/>
-      <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
+        <Style Selector="^ /template/ TextBlock#PART_Watermark">
+          <Setter Property="Foreground" Value="{DynamicResource TextControlPlaceholderForegroundPointerOver}" />
+        </Style>
+      </Style>
+
+      <!-- Focused State -->
+      <Style Selector="^:focus">
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundFocused}" />
+
+        <Style Selector="^ /template/ Border#PART_BorderElement">
+          <Setter Property="Background" Value="White"/>
+          <Setter Property="BorderBrush" Value="#98CDFD"/>
+          <Setter Property="BorderThickness" Value="1" />
+          <Setter Property="BoxShadow" Value="0 2 10 0 #14000000"></Setter>
+        </Style>
+      </Style>
     </Style>
     
     <!-- ========================================== MENU LATERAL ========================================= -->
     <Style Selector="ListBox.menu-lateral > ListBoxItem">
-      <Setter Property="FontSize" Value="13"></Setter>
+      <Setter Property="FontSize" Value="14"></Setter>
       <Setter Property="FontFamily" Value="{StaticResource Poppins-Semibold}"></Setter>
-      <Setter Property="Height" Value="40"></Setter>
+      <Setter Property="Height" Value="45"></Setter>
       <Setter Property="Margin" Value="0"></Setter>
       <Setter Property="Background" Value="Transparent" />
-      <Setter Property="CornerRadius" Value="2 4 4 2" />
-      <Setter Property="Foreground" Value="{DynamicResource Texto-Secundario}"></Setter>
+      <Setter Property="CornerRadius" Value="8" />
+      <Setter Property="Foreground" Value="{DynamicResource Texto-Suave}"></Setter>
       <Setter Property="Template">
         <ControlTemplate>
           <Border
             x:Name="PART_Background" Background="Transparent"
-            CornerRadius="4" Padding="10 0" Margin="0 0 0 5">
+            CornerRadius="8" Padding="10 0" Margin="0 0 0 5">
             
             <Border.Transitions>
               <Transitions>

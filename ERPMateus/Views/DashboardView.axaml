@@ -2,9 +2,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls="clr-namespace:ERPMateus.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ERPMateus.Views.DashboardView">
-    <StackPanel>
-        <TextBlock Text="Opa!"></TextBlock>
-    </StackPanel>
+             x:Class="ERPMateus.Views.DashboardView"
+             Background="Transparent">
+    
+    <Grid RowDefinitions="Auto, 80, *" Margin="20">
+        <StackPanel Orientation="Horizontal" Margin="10 0"
+                    Spacing="10" VerticalAlignment="Center">
+            <TextBlock Classes="Bold" 
+                       FontSize="18" Text="Olá, Zeuxis Rafael" VerticalAlignment="Center"></TextBlock>
+            <avalonia:MaterialIcon Kind="HandWave" Foreground="#545454" FontSize="18" VerticalAlignment="Center" />
+        </StackPanel>
+        <UniformGrid Grid.Row="1" Columns="4" Height="100" Margin="0 20 0 10">
+            <controls:KpiCard Titulo="Earnings" Valor="R$ 350.40" Icone="Abacus"/>
+            <controls:KpiCard Titulo="Spend this month" Valor="R$ 2642.39" Icone="Abacus" />
+            <controls:KpiCard Titulo="Sales" Valor="R$ 574.34" Icone="Home" />
+            <controls:KpiCard Titulo="Your balance" Valor="R$ 1.000,00" Icone="Abacus" />
+        </UniformGrid>
+    </Grid>
+    
 </UserControl>

@@ -5,41 +5,46 @@
              xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ERPMateus.Views.Auxiliar.LoginView" x:DataType="viewModels:LoginViewModel">
+             x:Class="ERPMateus.Views.Auxiliar.LoginView"
+             x:DataType="viewModels:LoginViewModel">
     
     <Grid ColumnDefinitions="*, 1.1*" Background="{DynamicResource BackgroundPrimary}">
-        
-        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="60,0" MaxWidth="400">
-            <Image Source="/Assets/Images/logo-mateus.png" Height="120" ></Image>
-            <TextBlock Text="Entrar" FontSize="32" FontWeight="Bold" Foreground="#1B2559" Margin="0,0,0,10"/>
+        <StackPanel IsVisible="False">
+            <StackPanel>
+                <Button Command="{Binding  TestarCommand}">TESTE</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel IsEnabled="{Binding !UpdateDto.IsUpdating}" Grid.Column="0" VerticalAlignment="Center" Margin="60,0" MaxWidth="400">
+            <Image Source="/Assets/Images/grupo-mateus-logo.png" Height="90" Margin="0 0 0 10" ></Image>
+            <TextBlock Text="Entrar" FontSize="32" FontWeight="Bold" Foreground="#1B2559" Margin="0,0,0,5"/>
             <TextBlock Text="Informe as suas credencias para entrar no sistema!" Classes="Suave" Margin="0,0,0,30"/>
 
             <StackPanel Orientation="Vertical" Spacing="20" Margin="0 0 0 8">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Email*" Classes="label__form" />
-                    <TextBox Watermark="mail@simmmple.com" />
+                    <TextBox Watermark="mail@simmmple.com" Text="{Binding Username}" />
                 </StackPanel>
                 
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Password*" Classes="label__form" />
-                    <TextBox Watermark="Min. 8 characters" PasswordChar="*">
+                    <TextBox Classes="super" Watermark="Min. 8 characters" 
+                             PasswordChar="*" Text="{Binding Password}">
                         <TextBox.InnerRightContent>
                             <Button Classes="Icon" Content="👁️" Background="Transparent" BorderThickness="0" Margin="0,0,10,0"/>
                         </TextBox.InnerRightContent>
                     </TextBox>
                 </StackPanel>
-                
             </StackPanel>
-           
-
-            <DockPanel Margin="0,0,0,25">
-                <CheckBox Content="Keep me logged in" DockPanel.Dock="Left" />
-                <Button Content="Forgot password?" Background="Transparent" Foreground="#4318FF" HorizontalAlignment="Right"/>
+            
+            <DockPanel Margin="0,0,0,25" VerticalAlignment="Center">
+                <CheckBox Content="Manter conectado" DockPanel.Dock="Left" />
+                <!-- <Button VerticalAlignment="Center" Content="Forgot password?" Background="Transparent" Foreground="#4318FF"  -->
+                <!--         HorizontalAlignment="Right"/> -->
             </DockPanel>
 
             <Button Classes="primary" Height="42" 
                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                    FontWeight="Bold">
+                    FontWeight="Bold" Command="{Binding ExecutarLoginCommand}">
                 <StackPanel Orientation="Horizontal" Spacing="10">
                     <avalonia:MaterialIcon Kind="Login" />
                     <TextBlock Foreground="White" Text="Entrar" />
@@ -50,7 +55,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
                 <TextBlock Text="Don't have an account?" Foreground="#A3AED0"/>
                 <Button Content="Entrar" Foreground="#4318FF"
-                        Command="{Binding ExecutarLoginCommand}"
+                        Command="{Binding TestarCommand}"
                         Background="Transparent" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>
@@ -63,11 +68,18 @@
                 </LinearGradientBrush>
             </Border.Background>
             
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid RowDefinitions="*, Auto" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel>
                     <TextBlock Text="ERP do futuro!" FontSize="42" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
                     <TextBlock Text="Rápido, prático e mais acessível" Foreground="White" Opacity="0.8" TextAlignment="Center" Margin="0,15"/>
                 </StackPanel>
+                <Border HorizontalAlignment="Center" IsVisible="{Binding UpdateDto.IsUpdating}" Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Stretch" Spacing="8">
+                        <ProgressBar Height="10" IsIndeterminate="True"></ProgressBar>
+                        <TextBlock HorizontalAlignment="Center" Foreground="Chartreuse"
+                                   Text="{Binding UpdateDto.Status}"></TextBlock>
+                    </StackPanel>
+                </Border>
             </Grid>
         </Border>
     </Grid>
