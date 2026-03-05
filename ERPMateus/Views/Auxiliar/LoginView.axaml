@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
              x:Class="ERPMateus.Views.Auxiliar.LoginView"
              x:DataType="viewModels:LoginViewModel">
     
@@ -37,7 +37,8 @@
             </StackPanel>
             
             <DockPanel Margin="0,0,0,25" VerticalAlignment="Center">
-                <CheckBox Content="Manter conectado" DockPanel.Dock="Left" />
+                <CheckBox Content="Manter conectado" DockPanel.Dock="Left" FontSize="12" 
+                          IsChecked="True" />
                 <!-- <Button VerticalAlignment="Center" Content="Forgot password?" Background="Transparent" Foreground="#4318FF"  -->
                 <!--         HorizontalAlignment="Right"/> -->
             </DockPanel>
@@ -52,8 +53,8 @@
                 
             </Button>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-                <TextBlock Text="Don't have an account?" Foreground="#A3AED0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20" Spacing="10">
+                <TextBlock Text="Don't have an account?" Foreground="#A3AED0" VerticalAlignment="Center"/>
                 <Button Content="Entrar" Foreground="#4318FF"
                         Command="{Binding TestarCommand}"
                         Background="Transparent" FontWeight="Bold"/>
