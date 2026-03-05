@@ -76,7 +76,7 @@
                 <Border HorizontalAlignment="Center" IsVisible="{Binding UpdateDto.IsUpdating}" Grid.Row="1">
                     <StackPanel HorizontalAlignment="Stretch" Spacing="8">
                         <ProgressBar Height="10" IsIndeterminate="True"></ProgressBar>
-                        <TextBlock HorizontalAlignment="Center" Foreground="Chartreuse"
+                        <TextBlock HorizontalAlignment="Center" Margin="0 5" Foreground="Chartreuse"
                                    Text="{Binding UpdateDto.Status}"></TextBlock>
                     </StackPanel>
                 </Border>

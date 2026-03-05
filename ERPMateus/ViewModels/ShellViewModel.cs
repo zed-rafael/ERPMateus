@@ -19,7 +19,7 @@ public partial class ShellViewModel : ViewModelBase
 
     public ShellViewModel()
     {
-        _updates = new UpdateService("https://meusttr.net/updates/erpmateus");
+        _updates = new UpdateService();
         Connections = new ConnectionsViewModel(SetStatus);
 
         Current = Connections;

@@ -10,8 +10,8 @@ public sealed class UpdateService
 {
     private readonly string _feedUrl;
 
-    public UpdateService(string feedUrl)
-        => _feedUrl = feedUrl;
+    public UpdateService()
+        => _feedUrl = OperatingSystem.IsWindows() ? "https://meusttr.net/updates/erpmateus/win" : "https://meusttr.net/updates/erpmateus/linux";
     
     public async Task CheckAndUpdateAsync(UpdateProgressDto dto, CancellationToken ct = default)
     {
@@ -23,9 +23,10 @@ public sealed class UpdateService
 
         try
         {
-            //https://meusttr.net/updates/erpmateus/
-            dto.Status = "Verificando atualizações 2...";
-            await Task.Delay(3000, ct);
+            dto.Status = "Iniciando o ::SISTEMA::";
+            await Task.Delay(4000, ct);
+            dto.Status = "Verificando atualizações ...";
+            await Task.Delay(6000, ct);
             var mgr = new UpdateManager(_feedUrl);
             
 

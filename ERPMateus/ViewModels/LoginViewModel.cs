@@ -24,9 +24,8 @@ public partial class LoginViewModel : ViewModelBase
     public LoginViewModel(Action<Usuario> onLoginSucesso)
     {
         _onLoginSucesso = onLoginSucesso;
-        _updates = new UpdateService("https://meusttr.net/updates/erpmateus/");
-
-        // Opção 1: já dispara ao entrar no login:
+        _updates = new UpdateService();
+        
         _ = CheckUpdatesOnLoginAsync();
     }
     
