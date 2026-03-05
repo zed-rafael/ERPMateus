@@ -19,6 +19,7 @@ public partial class PrincipalViewModel : ViewModelBase
     public DashboardViewModel DashboardViewModel { get; } = new();
     
     public string AppVersion => $"v{AppInfo.Version}";
+    [ObservableProperty] private bool isMenuAberto = true;
     [ObservableProperty] private string server;
     [ObservableProperty] private int pagina;
     [ObservableProperty] private string _UpdateStatus = "Atualizar";
@@ -34,7 +35,13 @@ public partial class PrincipalViewModel : ViewModelBase
     {
         UpdateStatus = $"Conectando em {Server}...";
     }
-    
+
+    [RelayCommand]
+    private void AbrirFecharMenu()
+    {
+        IsMenuAberto = !IsMenuAberto;
+    }
+
     [RelayCommand]
     private async Task CheckUpdate()
     {

@@ -8,8 +8,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ERPMateus.Views.PrincipalView" x:DataType="viewModels:PrincipalViewModel">
     <SplitView OpenPaneLength="240"
-               IsPaneOpen="True"
+               IsPaneOpen="{Binding IsMenuAberto}"
                DisplayMode="CompactInline"
+               CompactPaneLength="80"
                PaneBackground="{DynamicResource PrimaryBackgroundGradient}"
                Background="{DynamicResource  BackgroundPrimary}">
         <SplitView.Pane>
@@ -86,7 +87,7 @@
                         <StackPanel VerticalAlignment="Center"
                                     Orientation="Horizontal"
                                     Margin="20 0" Spacing="12">
-                            <Button Classes="primary-icon" VerticalAlignment="Center" Width="30" Height="28">
+                            <Button Command="{Binding AbrirFecharMenuCommand}" Classes="primary-icon" VerticalAlignment="Center" Width="30" Height="28">
                                 <avalonia:MaterialIcon Kind="Menu" FontSize="12"></avalonia:MaterialIcon>
                             </Button>
                             <TextBlock FontSize="16" VerticalAlignment="Center"
