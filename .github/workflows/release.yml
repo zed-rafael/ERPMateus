@@ -6,13 +6,13 @@ on:
       - "v*.*.*"
 
 jobs:
-
   build-linux:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Importante para o Velopack ver histórico se necessário
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -32,13 +32,15 @@ jobs:
 
       - name: Pack Linux
         run: |
+          # Extrai a versão da tag (ex: v1.0.0 -> 1.0.0)
+          VERSION=${GITHUB_REF_NAME#v}
           vpk pack \
-          --packId ERPMateus \
-          --packVersion ${GITHUB_REF_NAME#v} \
-          --packDir publish-linux \
-          --icon ERPMateus/Assets/icon.png \
-          --channel linux \
-          --outputDir ReleasesLinux
+            --packId ERPMateus \
+            --packVersion $VERSION \
+            --packDir publish-linux \
+            --icon ERPMateus/Assets/icon.png \
+            --mainExe ERPMateus \
+            --outputDir ReleasesLinux
 
       - name: Upload Linux to server
         uses: appleboy/scp-action@v0.1.7
@@ -50,14 +52,13 @@ jobs:
           target: "/var/www/updates/erpmateus/linux"
           strip_components: 1
 
-
-
   build-windows:
     runs-on: windows-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -76,14 +77,16 @@ jobs:
             -o publish-win
 
       - name: Pack Windows
+        shell: pwsh
         run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
           vpk pack `
-          --packId ERPMateus `
-          --packVersion ${env:GITHUB_REF_NAME.Replace('v','')} `
-          --packDir publish-win `
-          --icon ERPMateus/Assets/icon.png `
-          --channel win `
-          --outputDir ReleasesWin
+            --packId ERPMateus `
+            --packTitle "ERP Mateus" `
+            --packVersion $version `
+            --packDir publish-win `
+            --icon ERPMateus/Assets/icon.png `
+            --outputDir ReleasesWin
 
       - name: Upload Windows to server
         uses: appleboy/scp-action@v0.1.7
