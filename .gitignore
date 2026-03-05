@@ -32,3 +32,8 @@ Thumbs.db
 *.exe
 *.dll
 *.pdb
+
+publish/
+Releases/
+*.nupkg
+*.dll
