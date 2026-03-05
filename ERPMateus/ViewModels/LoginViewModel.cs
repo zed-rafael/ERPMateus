@@ -11,11 +11,21 @@ namespace ERPMateus.ViewModels;
 public partial class LoginViewModel : ViewModelBase
 {
     [ObservableProperty] private string _username;
-    [ObservableProperty] private string _password;
+    [ObservableProperty] private string _password = "";
     [ObservableProperty] private string _errorMessage;
     [ObservableProperty] private bool _loginSucesso;
     [ObservableProperty] private bool _habilitarEntrar;
     private readonly Action<Usuario> _onLoginSucesso;
+
+    // Esta variável controla se a senha está visível
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(PasswordChar))]
+    private bool _isPasswordVisible;
+
+    // Propriedade calculada que o TextBox vai usar
+    // Se for visível, retorna o caractere nulo \0 (mostra o texto)
+    // Se for oculta, retorna '*'
+    public char PasswordChar => IsPasswordVisible ? '\0' : '*';
     
     private readonly UpdateService _updates;
 

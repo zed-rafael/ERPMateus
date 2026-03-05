@@ -21,16 +21,20 @@
 
             <StackPanel Orientation="Vertical" Spacing="20" Margin="0 0 0 8">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Email*" Classes="label__form" />
-                    <TextBox Watermark="mail@simmmple.com" Text="{Binding Username}" />
+                    <TextBlock Text="Usuaŕio*" Classes="label__form" />
+                    <TextBox Watermark="Usuário" Text="{Binding Username}" />
                 </StackPanel>
                 
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Password*" Classes="label__form" />
-                    <TextBox Classes="super" Watermark="Min. 8 characters" 
-                             PasswordChar="*" Text="{Binding Password}">
+                    <TextBlock Text="Senha*" Classes="label__form" />
+                    <TextBox Classes="super" Watermark="Min. 8 caracteres" 
+                             PasswordChar="{Binding PasswordChar}"
+                             Text="{Binding Password}">
                         <TextBox.InnerRightContent>
-                            <Button Classes="Icon" Content="👁️" Background="Transparent" BorderThickness="0" Margin="0,0,10,0"/>
+                            <ToggleButton Classes="Icon" Content="👁️" 
+                                          IsChecked="{Binding IsPasswordVisible}"
+                                          Background="Transparent" 
+                                    BorderThickness="0" Margin="0,0,10,0"/>
                         </TextBox.InnerRightContent>
                     </TextBox>
                 </StackPanel>
