@@ -22,3 +22,13 @@ Thumbs.db
 
 ## Secrets (se tiver)
 **/appsettings.*.json
+
+# Ignorar pastas de publicação e instaladores
+[Pp]ublish/
+[Rr]eleases/
+
+# Ignorar extensões específicas de pacotes e binários
+*.nupkg
+*.exe
+*.dll
+*.pdb
