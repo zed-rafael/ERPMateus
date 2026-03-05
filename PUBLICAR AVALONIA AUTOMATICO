@@ -25,3 +25,28 @@ dotnet publish -c Release -r linux-x64 --self-contained true -o publish
 
 INTALAR O VPK NO TERMINAL
 dotnet tool install -g vpk
+
+
+Para acionar o gitaction
+git tag v1.0.2
+git push origin v1.0.2
+
+
+chmod +x ERPMateus.AppImage
+./ERPMateus.AppImage
+
+-- LIMPAR VERSAO
+# Linux feed
+sudo rm -rf /var/www/updates/erpmateus/linux/*
+# Windows feed
+sudo rm -rf /var/www/updates/erpmateus/win/*
+
+<PropertyGroup>
+  <Version>1.0.0</Version>
+  <InformationalVersion>1.0.0</InformationalVersion>
+</PropertyGroup>
+git add .
+git commit -m "Release 1.0.0"
+git tag v1.0.0
+git push origin main
+git push origin v1.0.0
