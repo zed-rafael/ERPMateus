@@ -40,6 +40,8 @@ jobs:
           # Criamos uma versão baseada no número sequencial do GitHub Actions
           # Se o build for o nº 5, a versão será 1.0.5
           VERSION="1.0.${{ github.run_number }}"
+
+          mkdir -p ReleasesLinux
           
           vpk pack \
             --packId ERPMateus \
