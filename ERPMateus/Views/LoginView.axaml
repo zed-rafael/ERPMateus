@@ -40,23 +40,34 @@
                           IsChecked="True" />
                 <Button VerticalAlignment="Center" Content="Esqueceu a senha?" Background="Transparent" Foreground="#4318FF"
                         HorizontalAlignment="Right"/>
+                
             </DockPanel>
-
-            <Button Classes="primary" Height="42" 
+            
+            <Button VerticalAlignment="Center" Classes="primary" IsVisible="{Binding !IsLoading}"
                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                    FontWeight="Bold" Command="{Binding ExecutarLoginCommand}">
+                    Command="{Binding ExecutarLoginCommand}">
                 <StackPanel Orientation="Horizontal" Spacing="10">
                     <avalonia:MaterialIcon Kind="Login" />
                     <TextBlock Foreground="White" Text="Entrar" />
                 </StackPanel>
-                
             </Button>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20" Spacing="10">
-                <TextBlock Text="Ainda não tem uma conta?" Foreground="#A3AED0" VerticalAlignment="Center"/>
-                <Button Content="Criar" Foreground="#4318FF"
-                        Background="Transparent" FontWeight="Bold"/>
+            
+            <StackPanel Height="45">
+                <ProgressBar VerticalAlignment="Center" IsVisible="{Binding IsLoading}" IsIndeterminate="True"></ProgressBar>
+                <StackPanel IsVisible="{Binding !IsLoading}" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20" Spacing="10">
+                    <TextBlock Text="Ainda não tem uma conta?" Foreground="#A3AED0" VerticalAlignment="Center"/>
+                    <Button Content="Criar" Foreground="#4318FF"
+                            Background="Transparent" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ErrorMessage}" FontSize="12" HorizontalAlignment="Center"
+                               Foreground="IndianRed"></TextBlock>
+                </StackPanel>
             </StackPanel>
+           
+
+           
+            
         </StackPanel>
 
         <Border Grid.Column="1" Margin="0">

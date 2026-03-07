@@ -11,11 +11,14 @@ namespace ERPMateus.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private ViewModelBase? currentView;
+    [ObservableProperty] private ViewModelBase? _currentView;
     
     public MainWindowViewModel()
     {
+        Global.InfoAplicacao.Usuario = new Usuario()
+        {
+            UsuarioNome = "*Usuário"
+        };
         CurrentView = new LoginViewModel(this);
     }
 

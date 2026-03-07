@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ERPMateus.Models;
 using ERPMateus.Services;
 using Velopack;
 
@@ -19,12 +20,13 @@ public partial class PrincipalViewModel : ViewModelBase
     public DashboardViewModel DashboardViewModel { get; } = new();
     
     public string AppVersion => $"v{AppInfo.Version}";
-    [ObservableProperty] private bool isMenuAberto = true;
-    [ObservableProperty] private string server;
-    [ObservableProperty] private int pagina;
-    [ObservableProperty] private string _UpdateStatus = "Atualizar";
-    [ObservableProperty] private bool _IsUpdating;
+    [ObservableProperty] private bool _isMenuAberto = true;
+    [ObservableProperty] private string _server;
+    [ObservableProperty] private int _pagina;
+    [ObservableProperty] private string _updateStatus = "Atualizar";
+    [ObservableProperty] private bool _isUpdating;
 
+    [ObservableProperty] private Usuario? _usuario = Global.InfoAplicacao.Usuario;
 
     public PrincipalViewModel()
     {
@@ -41,13 +43,22 @@ public partial class PrincipalViewModel : ViewModelBase
     {
         IsMenuAberto = !IsMenuAberto;
     }
+    
+    // [RelayCommand]
+    // private void Sair()
+    // {
+    //     Usuario = null;
+    //     Pagina =  (int)PaginaAplicacao.Lo;
+    // }
+    
+    
 
     [RelayCommand]
     private async Task CheckUpdate()
     {
         try
         {
-            var mgr = new UpdateManager("https://meusttr.net/updates/erpmateus/");
+            var mgr = new UpdateManager("https://meusttr.net/updates/erpmateus/linux/");
             var newVersion = await mgr.CheckForUpdatesAsync();
 
             if (newVersion == null)

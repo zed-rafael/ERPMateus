@@ -12,6 +12,16 @@
         <Setter Property="FontSize" Value="14" />
     </Style>
     
+    <Style Selector="TextBlock.menor">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Regular}" />
+      <Setter Property="FontSize" Value="12" />
+    </Style>
+    
+    <Style Selector="TextBlock.negrito__menor">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins-Bold}" />
+      <Setter Property="FontSize" Value="12" />
+    </Style>
+    
     <Style Selector="TextBlock.h2">
       <Setter Property="FontFamily" Value="{StaticResource Poppins-Extra-Bold}" />
       <Setter Property="FontSize" Value="22" />

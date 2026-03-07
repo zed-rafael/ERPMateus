@@ -17,9 +17,11 @@
             <Border Grid.Column="0" Background="{DynamicResource BgSideBar}"
                     BorderBrush="#F0F0F0" BorderThickness="0,0,1,0">
             <Grid RowDefinitions="80, *, Auto">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 30"
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20"
                             HorizontalAlignment="Center">
-                    <Image Source="/Assets/Images/grupo-mateus-logo.png" Width="90" ></Image>
+                    <Image IsVisible="{Binding IsMenuAberto}" Source="/Assets/Images/grupo-mateus-logo.png" Width="90" ></Image>
+                    <Image IsVisible="{Binding !IsMenuAberto}" HorizontalAlignment="Center"
+                           Source="/Assets/Images/logo-one-mateus.png" Width="40" Margin="0 0 13 0"></Image>
                     
                 </StackPanel>
                 <StackPanel Grid.Row="1" Margin="15 20">
@@ -52,12 +54,13 @@
                 <StackPanel Spacing="10" Grid.Row="2" VerticalAlignment="Bottom" Margin="10">
                     
                     <ProgressBar IsVisible="{Binding IsUpdating}" Height="10" IsIndeterminate="True"></ProgressBar>
-                    <Button IsVisible="{Binding !IsUpdating}" Classes="primary" Command="{Binding CheckUpdateCommand}" HorizontalAlignment="Stretch" 
+                    <Button IsVisible="{Binding !IsUpdating}" Classes="primary" 
+                            Command="{Binding CheckUpdateCommand}" HorizontalAlignment="Stretch" 
                             HorizontalContentAlignment="Center">
                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
-                            <avalonia:MaterialIcon Kind="Refresh"  Width="16" />
+                            <avalonia:MaterialIcon Kind="Logout"  Width="16" />
                             <TextBlock Foreground="White"
-                                       Text="Atualizar!"></TextBlock>
+                                       Text="Sair"></TextBlock>
                         </StackPanel>
                     </Button>
                     <TextBlock Text="{Binding Path=AppVersion}" Foreground="White"
@@ -96,15 +99,15 @@
                         <StackPanel Grid.Column="1" Orientation="Horizontal" 
                                     HorizontalAlignment="Right" Margin="0 0 20 0"
                                     Spacing="8" VerticalAlignment="Center">
-                            <StackPanel Spacing="0" VerticalAlignment="Center">
-                                <TextBlock FontSize="13" Text="Zeuxis Rafael" Classes="Bold" />
-                                <TextBlock Margin="0" FontSize="12" Padding="0"
-                                           HorizontalAlignment="Right"
-                                           Classes="metadata"
-                                           Text="Desenvolvedor"></TextBlock>
-                            </StackPanel>
+                            <Button Classes="primary-icon" Width="30" Height="28">
+                                <avalonia:MaterialIcon Kind="Logout"></avalonia:MaterialIcon>
+                            </Button>
                             <controls:ImageRemote Width="32" VerticalAlignment="Center" 
-                                                    Height="32" Url="https://i.pravatar.cc/90" />
+                                                  Height="32" Url="https://i.pravatar.cc/90" />
+                            <StackPanel Spacing="0" VerticalAlignment="Center">
+                                <TextBlock Classes="negrito__menor" Text="{Binding Usuario.UsuarioNome}" />
+                            </StackPanel>
+                            
                         </StackPanel>
                     </Grid>
                 </Border>
