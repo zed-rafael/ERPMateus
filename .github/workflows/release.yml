@@ -35,14 +35,20 @@ jobs:
             --force \
             -o publish-linux
 
+      - name: Download Previous RELEASES
+        # Importante: Baixamos o arquivo RELEASES atual do servidor para que o Velopack
+        # saiba que esta nova versão é uma continuação da anterior.
+        continue-on-error: true
+        run: |
+          mkdir -p ReleasesLinux
+          scp -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/updates/erpmateus/linux/RELEASES ReleasesLinux/ || true
+
       - name: Pack Linux
         run: |
           # Criamos uma versão baseada no número sequencial do GitHub Actions
-          # Se o build for o nº 5, a versão será 1.0.5
           VERSION="1.0.${{ github.run_number }}"
 
-          mkdir -p ReleasesLinux
-          
+          # O vpk pack agora usará o arquivo RELEASES que baixamos no passo anterior
           vpk pack \
             --packId ERPMateus \
             --packVersion $VERSION \
