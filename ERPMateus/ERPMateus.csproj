@@ -33,4 +33,11 @@
         <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0-preview3.25342.7" />
         <PackageReference Include="Velopack" Version="0.0.1444-gc245055" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\LoginView.axaml.cs">
+        <DependentUpon>LoginView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

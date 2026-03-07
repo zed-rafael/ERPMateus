@@ -24,9 +24,9 @@ public sealed class UpdateService
         try
         {
             dto.Status = "Iniciando o ::SISTEMA::";
-            await Task.Delay(4000, ct);
+            await Task.Delay(400, ct);
             dto.Status = "Verificando atualizações ...";
-            await Task.Delay(6000, ct);
+            await Task.Delay(600, ct);
             var mgr = new UpdateManager(_feedUrl);
             
 
@@ -34,7 +34,7 @@ public sealed class UpdateService
             if (info is null)
             {
                 dto.Status = "Você já está na última versão.";
-                await Task.Delay(2000, ct);
+                await Task.Delay(200, ct);
                 dto.Percent = 100;
                 return;
             }

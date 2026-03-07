@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using ERPMateus.ViewModels;
 
-namespace ERPMateus.Views.Auxiliar;
+namespace ERPMateus.Views;
 
 public partial class LoginView : UserControl
 {

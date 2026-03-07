@@ -3,9 +3,6 @@
         xmlns:vm="clr-namespace:ERPMateus.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-        xmlns:auxiliar="clr-namespace:ERPMateus.Views.Auxiliar"
-        xmlns:views="clr-namespace:ERPMateus.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ERPMateus.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -16,21 +13,14 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
-    <Grid RowDefinitions="Auto, *">
-        <Carousel Grid.Row="1" SelectedIndex="{Binding PaginaAplicacao}">
-            <Carousel.PageTransition >
-                <CompositePageTransition>
-                    <CompositePageTransition>
-                        <Rotate3DTransition Duration="0:00:00.450" />
-                    </CompositePageTransition>
-                </CompositePageTransition>
-            </Carousel.PageTransition>
-            <Carousel.Items>
-                <auxiliar:LoginView DataContext="{Binding LoginViewModel}" />
-                <views:PrincipalView DataContext="{Binding PrincipalViewModel}" />
-            </Carousel.Items>
-        </Carousel>
-    </Grid>
-     
-
+    <Window.Resources>
+        <CrossFade x:Key="MyPageTransition" Duration="0:0:0.950" />    
+    </Window.Resources>
+    
+    <Border ClipToBounds="True">
+        <TransitioningContentControl
+            Background="{DynamicResource RegionBrush}"
+            PageTransition="{StaticResource MyPageTransition}"
+            Content="{Binding CurrentView}"/>
+    </Border>
 </Window>

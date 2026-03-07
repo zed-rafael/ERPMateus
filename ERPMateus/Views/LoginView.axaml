@@ -5,15 +5,10 @@
              xmlns:viewModels="clr-namespace:ERPMateus.ViewModels"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
-             x:Class="ERPMateus.Views.Auxiliar.LoginView"
+             x:Class="ERPMateus.Views.LoginView"
              x:DataType="viewModels:LoginViewModel">
     
     <Grid ColumnDefinitions="*, 1.1*" Background="{DynamicResource BackgroundPrimary}">
-        <StackPanel IsVisible="False">
-            <StackPanel>
-                <Button Command="{Binding  TestarCommand}">TESTE</Button>
-            </StackPanel>
-        </StackPanel>
         <StackPanel IsEnabled="{Binding !UpdateDto.IsUpdating}" Grid.Column="0" VerticalAlignment="Center" Margin="60,0" MaxWidth="400">
             <Image Source="/Assets/Images/grupo-mateus-logo.png" Height="90" Margin="0 0 0 10" ></Image>
             <TextBlock Text="Entrar" FontSize="32" FontWeight="Bold" Foreground="#1B2559" Margin="0,0,0,5"/>
@@ -22,14 +17,14 @@
             <StackPanel Orientation="Vertical" Spacing="20" Margin="0 0 0 8">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Usuaŕio*" Classes="label__form" />
-                    <TextBox Watermark="Usuário" Text="{Binding Username}" />
+                    <TextBox Watermark="Usuário" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Senha*" Classes="label__form" />
                     <TextBox Classes="super" Watermark="Min. 8 caracteres" 
                              PasswordChar="{Binding PasswordChar}"
-                             Text="{Binding Password}">
+                             Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
                         <TextBox.InnerRightContent>
                             <ToggleButton Classes="Icon" Content="👁️" 
                                           IsChecked="{Binding IsPasswordVisible}"
@@ -43,8 +38,8 @@
             <DockPanel Margin="0,0,0,25" VerticalAlignment="Center">
                 <CheckBox Content="Manter conectado" DockPanel.Dock="Left" FontSize="12" 
                           IsChecked="True" />
-                <!-- <Button VerticalAlignment="Center" Content="Forgot password?" Background="Transparent" Foreground="#4318FF"  -->
-                <!--         HorizontalAlignment="Right"/> -->
+                <Button VerticalAlignment="Center" Content="Esqueceu a senha?" Background="Transparent" Foreground="#4318FF"
+                        HorizontalAlignment="Right"/>
             </DockPanel>
 
             <Button Classes="primary" Height="42" 
@@ -58,9 +53,8 @@
             </Button>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20" Spacing="10">
-                <TextBlock Text="Don't have an account?" Foreground="#A3AED0" VerticalAlignment="Center"/>
-                <Button Content="Entrar" Foreground="#4318FF"
-                        Command="{Binding TestarCommand}"
+                <TextBlock Text="Ainda não tem uma conta?" Foreground="#A3AED0" VerticalAlignment="Center"/>
+                <Button Content="Criar" Foreground="#4318FF"
                         Background="Transparent" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>

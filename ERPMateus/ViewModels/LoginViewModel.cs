@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -10,30 +11,33 @@ namespace ERPMateus.ViewModels;
 
 public partial class LoginViewModel : ViewModelBase
 {
-    [ObservableProperty] private string _username;
-    [ObservableProperty] private string _password = "";
-    [ObservableProperty] private string _errorMessage;
-    [ObservableProperty] private bool _loginSucesso;
-    [ObservableProperty] private bool _habilitarEntrar;
-    private readonly Action<Usuario> _onLoginSucesso;
+    private readonly MainWindowViewModel _mainWindow;
+    
+    [ObservableProperty]
+    [NotifyDataErrorInfo]
+    [Required(ErrorMessage = "Preenchimento obrigatório")] 
+    [MaxLength(50, ErrorMessage = "Máximo de 50 caracteres")] 
+    private string? _username = string.Empty;
+    
+    [ObservableProperty]
+    [NotifyDataErrorInfo]
+    [Required(ErrorMessage = "Preenchimento obrigatório")] 
+    [MinLength(4, ErrorMessage = "Mínimo de 4 caracteres")] 
+    [MaxLength(40, ErrorMessage = "Máximo de 40 caracteres")] 
+    private string? _password = string.Empty;
 
-    // Esta variável controla se a senha está visível
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(PasswordChar))]
     private bool _isPasswordVisible;
 
-    // Propriedade calculada que o TextBox vai usar
-    // Se for visível, retorna o caractere nulo \0 (mostra o texto)
-    // Se for oculta, retorna '*'
     public char PasswordChar => IsPasswordVisible ? '\0' : '*';
     
     private readonly UpdateService _updates;
-
     public UpdateProgressDto UpdateDto { get; } = new();
 
-    public LoginViewModel(Action<Usuario> onLoginSucesso)
+    public LoginViewModel(MainWindowViewModel mainWindow)
     {
-        _onLoginSucesso = onLoginSucesso;
+        _mainWindow = mainWindow;
         _updates = new UpdateService();
         
         _ = CheckUpdatesOnLoginAsync();
@@ -44,52 +48,15 @@ public partial class LoginViewModel : ViewModelBase
         await _updates.CheckAndUpdateAsync(UpdateDto);
     }
 
-    // Opção 2: um botão "Verificar"
-    [RelayCommand]
-    private async Task CheckUpdates()
-    {
-        await _updates.CheckAndUpdateAsync(UpdateDto);
-    }
-
-    [RelayCommand]
-    private void Testar()
-    {
-        Console.WriteLine("ExecutarLogin");
-        // Usuario usuario = await new DBUsuario().DBSelect(Username, Password);
-        Usuario usuario = new Usuario() { UsuarioID = 10, NomeCompleto = "Zeuxis Rafael"};
-        if (usuario == null)
-        {
-            LoginSucesso = false;
-            ErrorMessage = "Usuário ou senha inválido.";
-            Console.WriteLine("Usuario null");
-            return;
-        }
-        _onLoginSucesso?.Invoke(usuario);
-        LoginSucesso = true;
-        Console.WriteLine("LoginSucesso!!");
-    }
-
     [RelayCommand]
     private void ExecutarLogin()
     {
-        Console.WriteLine("ExecutarLogin");
-        // Usuario usuario = await new DBUsuario().DBSelect(Username, Password);
-        Usuario usuario = new Usuario() { UsuarioID = 10, NomeCompleto = "Zeuxis Rafael"};
-        if (usuario == null)
+        ValidateAllProperties();
+        
+        if (HasErrors)
         {
-            LoginSucesso = false;
-            ErrorMessage = "Usuário ou senha inválido.";
-            Console.WriteLine("Usuario null");
             return;
         }
-        _onLoginSucesso?.Invoke(usuario);
-        LoginSucesso = true;
-        Console.WriteLine("LoginSucesso!!");
-    }
-    
-    private bool PodeExecutarLogin()
-    {
-        return true;
-        // return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
+        _mainWindow.ShowMainApp();
     }
 }

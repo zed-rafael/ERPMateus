@@ -11,41 +11,16 @@ namespace ERPMateus.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private const int PAGINA_LOGIN = 0;
-    private const int PAGINA_PAINEL = 1;
-    private const string MSG_BEM_VINDO = "Faça login para entrar";
-    [ObservableProperty] private Usuario? _usuario;
-    [ObservableProperty] private bool _estaLogado;
-    [ObservableProperty] private string? _bemVindo = MSG_BEM_VINDO;
+    [ObservableProperty]
+    private ViewModelBase? currentView;
     
-    public LoginViewModel LoginViewModel { get; }
-    public PrincipalViewModel PrincipalViewModel { get; } = new();
-    public DashboardViewModel DashboardViewModel { get; } = new();
-
-    [ObservableProperty] private int? paginaAplicacao = 0;
-    
-
     public MainWindowViewModel()
     {
-        Usuario = new Usuario();
-        LoginViewModel = new LoginViewModel(OnLoginSucesso);
-        EstaLogado = false;
-        PaginaAplicacao = PAGINA_LOGIN;
+        CurrentView = new LoginViewModel(this);
     }
 
-    [RelayCommand]
-    private void Testar()
+    public void ShowMainApp()
     {
-        Console.WriteLine("TESTE OK!");
-    }
-
-    private void OnLoginSucesso(Usuario usuario)
-    {
-        //__GLOBAL._USUARIO = usuario;
-        Console.WriteLine("Metodo dentro de main sucesso!");
-        Usuario = usuario;
-        EstaLogado = true;
-        BemVindo = usuario.UsuarioNome;
-        PaginaAplicacao = PAGINA_PAINEL;
+        CurrentView = new PrincipalViewModel();
     }
 }
