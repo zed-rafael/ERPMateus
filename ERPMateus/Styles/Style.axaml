@@ -98,7 +98,7 @@
     </Style>
     
     <Style Selector="Button.primary-icon">
-      <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+      <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
       <Setter Property="Foreground" Value="White"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
       <Setter Property="BorderThickness" Value="0"/>
