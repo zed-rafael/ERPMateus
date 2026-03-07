@@ -16,7 +16,7 @@
 
             <StackPanel Orientation="Vertical" Spacing="20" Margin="0 0 0 8">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Usuaŕio*" Classes="label__form" />
+                    <TextBlock Text="Usuário*" Classes="label__form" />
                     <TextBox Watermark="Usuário" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 
