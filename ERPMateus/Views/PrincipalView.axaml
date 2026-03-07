@@ -59,8 +59,7 @@
                             HorizontalContentAlignment="Center">
                         <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
                             <avalonia:MaterialIcon Kind="Logout"  Width="16" />
-                            <TextBlock Foreground="White"
-                                       Text="Sair"></TextBlock>
+                            <TextBlock Foreground="White" Text="Sair" />
                         </StackPanel>
                     </Button>
                     <TextBlock Text="{Binding Path=AppVersion}" Foreground="White"
@@ -90,7 +89,7 @@
                         <StackPanel VerticalAlignment="Center"
                                     Orientation="Horizontal"
                                     Margin="20 0" Spacing="12">
-                            <Button Command="{Binding AbrirFecharMenuCommand}" Classes="primary-icon" VerticalAlignment="Center" Width="30" Height="28">
+                            <Button Command="{Binding AbrirFecharMenuCommand}" Classes="primary-icon-ghost" VerticalAlignment="Center" Width="30" Height="28">
                                 <avalonia:MaterialIcon Kind="Menu" FontSize="12"></avalonia:MaterialIcon>
                             </Button>
                             <TextBlock FontSize="16" VerticalAlignment="Center"
@@ -99,8 +98,9 @@
                         <StackPanel Grid.Column="1" Orientation="Horizontal" 
                                     HorizontalAlignment="Right" Margin="0 0 20 0"
                                     Spacing="8" VerticalAlignment="Center">
-                            <Button Classes="primary-icon" Width="30" Height="28">
-                                <avalonia:MaterialIcon Kind="Logout"></avalonia:MaterialIcon>
+                            <Button Classes="primary-icon-ghost" Width="30" Height="28" Command="{Binding SairCommand}">
+                                <avalonia:MaterialIcon Kind="Logout" Width="18"
+                                                       Foreground="{DynamicResource Texto-Suave}"></avalonia:MaterialIcon>
                             </Button>
                             <controls:ImageRemote Width="32" VerticalAlignment="Center" 
                                                   Height="32" Url="https://i.pravatar.cc/90" />

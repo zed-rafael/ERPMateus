@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using ERPMateus.Messages;
 using ERPMateus.Models;
 using ERPMateus.Services;
 using Velopack;
@@ -44,12 +46,12 @@ public partial class PrincipalViewModel : ViewModelBase
         IsMenuAberto = !IsMenuAberto;
     }
     
-    // [RelayCommand]
-    // private void Sair()
-    // {
-    //     Usuario = null;
-    //     Pagina =  (int)PaginaAplicacao.Lo;
-    // }
+    [RelayCommand]
+    private void Sair()
+    {
+        Usuario = null;
+        WeakReferenceMessenger.Default.Send(new SairMessage());
+    }
     
     
 

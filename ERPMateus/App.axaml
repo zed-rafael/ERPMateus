@@ -34,7 +34,7 @@
 
         <Color x:Key="AccentColor">#2B0FB3</Color> 
         <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
-        <SolidColorBrush x:Key="AccentBrushHover" Color="#3311CC"/>
+        <SolidColorBrush x:Key="AccentBrushHover" Color="#CBE7FE"/>
         <SolidColorBrush x:Key="AccentBrushPressed" Color="#2B0FB3"/>
         <SolidColorBrush x:Key="AccentForegroundBrush" Color="White"/>
         

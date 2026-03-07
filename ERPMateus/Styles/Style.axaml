@@ -118,6 +118,31 @@
       <Setter Property="Opacity" Value="0.55"/>
     </Style>
     
+    <Style Selector="Button.primary-icon-ghost">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="4"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Cursor" Value="Hand"/>
+  
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
+        <Setter Property="Foreground" Value="White"/> 
+      </Style>
+  
+      <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource AccentBrushPressed}"/>
+      </Style>
+  
+      <Style Selector="^:disabled">
+        <Setter Property="Opacity" Value="0.55"/>
+      </Style>
+    </Style>
+    
+    
     
     <!-- ========================================== INPUT'S CONTROLS =========================================== -->
     <Style Selector="TextBlock.label__form">
