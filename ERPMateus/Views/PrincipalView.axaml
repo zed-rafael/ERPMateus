@@ -88,9 +88,9 @@
                     <Grid ColumnDefinitions="Auto, *">
                         <StackPanel VerticalAlignment="Center"
                                     Orientation="Horizontal"
-                                    Margin="20 0" Spacing="12">
+                                    Margin="20 0" Spacing="10">
                             <Button Command="{Binding AbrirFecharMenuCommand}" Classes="primary-icon-ghost" VerticalAlignment="Center" Width="30" Height="28">
-                                <avalonia:MaterialIcon Kind="Menu" FontSize="12"></avalonia:MaterialIcon>
+                                <avalonia:MaterialIcon Kind="Menu" Width="16"></avalonia:MaterialIcon>
                             </Button>
                             <TextBlock FontSize="16" VerticalAlignment="Center"
                                        Classes="Bold" Text="Dashboard"></TextBlock>
@@ -99,8 +99,7 @@
                                     HorizontalAlignment="Right" Margin="0 0 20 0"
                                     Spacing="8" VerticalAlignment="Center">
                             <Button Classes="primary-icon-ghost" Width="30" Height="28" Command="{Binding SairCommand}">
-                                <avalonia:MaterialIcon Kind="Logout" Width="18"
-                                                       Foreground="{DynamicResource Texto-Suave}"></avalonia:MaterialIcon>
+                                <avalonia:MaterialIcon Kind="Logout" Width="16" />
                             </Button>
                             <controls:ImageRemote Width="32" VerticalAlignment="Center" 
                                                   Height="32" Url="https://i.pravatar.cc/90" />

@@ -99,7 +99,7 @@
     
     <Style Selector="Button.primary-icon">
       <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
-      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="Foreground" Value="{DynamicResource Texto-Secundario}"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
       <Setter Property="BorderThickness" Value="0"/>
       <Setter Property="CornerRadius" Value="4"/>
@@ -121,6 +121,7 @@
     <Style Selector="Button.primary-icon-ghost">
       <Setter Property="Background" Value="Transparent"/>
       <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="Foreground" Value="{DynamicResource Texto-Secundario}"/>
       <Setter Property="BorderThickness" Value="0"/>
       <Setter Property="CornerRadius" Value="4"/>
       <Setter Property="Padding" Value="0"/>
@@ -130,7 +131,6 @@
   
       <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource AccentBrushHover}"/>
-        <Setter Property="Foreground" Value="White"/> 
       </Style>
   
       <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
