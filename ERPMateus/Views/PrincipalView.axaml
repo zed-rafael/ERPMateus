@@ -16,34 +16,33 @@
         <SplitView.Pane>
             <Border Grid.Column="0" Background="{DynamicResource BgSideBar}"
                     BorderBrush="#F0F0F0" BorderThickness="0,0,1,0">
-            <Grid RowDefinitions="80, *, Auto">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20"
+            <Grid RowDefinitions="60, *, Auto">
+                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Center" Margin="0 20"
                             HorizontalAlignment="Center">
                     <Image IsVisible="{Binding IsMenuAberto}" Source="/Assets/Images/grupo-mateus-logo.png" Width="90" ></Image>
                     <Image IsVisible="{Binding !IsMenuAberto}" HorizontalAlignment="Center"
                            Source="/Assets/Images/logo-one-mateus.png" Width="40" Margin="0 0 13 0"></Image>
-                    
                 </StackPanel>
-                <StackPanel Grid.Row="1" Margin="15 20">
+                <StackPanel Grid.Row="1" Margin="0 20">
                     <TextBlock Text="MENU" Classes="Normal" Margin="10,10"/>
                     <ListBox SelectedIndex="{Binding Pagina}" 
                              Background="Transparent" Classes="menu-lateral">
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <avalonia:MaterialIcon Kind="Monitor"  Width="16" />
-                                <Label>Painel</Label>
+                                <Label IsVisible="{Binding IsMenuAberto}">Painel</Label>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <avalonia:MaterialIcon Kind="FilePdfBox" Width="16" />
-                                <Label>Autorizações</Label>
+                                <Label IsVisible="{Binding IsMenuAberto}">Autorizações</Label>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <avalonia:MaterialIcon Kind="Gear" Width="16" />
-                                <Label>Configurações</Label>
+                                <Label IsVisible="{Binding IsMenuAberto}">Configurações</Label>
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>
